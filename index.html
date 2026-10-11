@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>XEROZ STORE - Top Up & Jual Beli Akun Free Fire</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome HD Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        xerozDark: '#030712',
+                        xerozCard: '#0b1329',
+                        xerozCardBorder: '#1e293b',
+                        xerozAccent: '#38bdf8', 
+                        xerozGold: '#f59e0b',
+                        xerozPurple: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #030712;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.12) 0px, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(139, 92, 246, 0.1) 0px, transparent 40%),
+                linear-gradient(to bottom, #030712, #010307);
+            background-attachment: fixed;
+            padding-bottom: 100px;
+        }
+        .neon-box {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-white antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- TOP HEADER -->
+    <header class="bg-xerozCard/90 backdrop-blur-xl border-b border-xerozCardBorder sticky top-0 z-50 px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+            <div class="bg-gradient-to-tr from-sky-500 to-blue-600 p-2 rounded-xl text-white font-black text-base shadow-lg shadow-sky-500/30 flex items-center justify-center">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+                <span class="font-black text-base tracking-wider block leading-none">XEROZ<span class="text-sky-400">STORE</span></span>
+                <span class="text-[9px] text-sky-400/80 font-semibold uppercase tracking-widest">Official Store</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2">
+            <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-full text-xs font-medium flex items-center space-x-1.5 text-slate-300">
+                <i class="fa-solid fa-magnifying-glass text-sky-400 text-[10px]"></i>
+                <span class="text-[10px]">Cari..</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-2 rounded-full text-xs text-sky-400">
+                <i class="fa-solid fa-globe"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- LIVE TICKER -->
+    <div class="bg-sky-500/10 border-b border-sky-500/20 py-1.5 px-4 text-[11px] text-sky-300 flex items-center justify-between overflow-hidden whitespace-nowrap">
+        <div class="flex items-center space-x-2 animate-pulse">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="font-bold text-white">TRANSAKSI REALTIME:</span>
+            <span>Top Up 720 Diamond Free Fire Berhasil (40 detik lalu)</span>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="max-w-md mx-auto px-4 pt-4 space-y-5">
+
+        <!-- HERO BANNER -->
+        <div class="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 border border-xerozCardBorder rounded-3xl p-5 overflow-hidden shadow-2xl neon-box">
+            <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 space-y-4">
+                <div class="inline-flex items-center space-x-1.5 bg-sky-500/10 border border-sky-500/30 px-3 py-1 rounded-full text-sky-400 text-[10px] font-extrabold tracking-wider uppercase">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+                    <span>XEROZ ON POINT • PROMO SPESIAL</span>
+                </div>
+                
+                <div class="space-y-1">
+                    <h1 class="text-2xl sm:text-3xl font-black tracking-tight leading-tight uppercase">
+                        AKUN GAME <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-purple-500">SIAP MAIN & TOP UP</span>
+                    </h1>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Pusat Jual Beli Akun Free Fire Tergacor, Top Up Diamond Instant 24 Jam, Aman & Bergaransi Resmi.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 pt-1">
+                    <a href="#topup" class="bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-2.5 px-2 rounded-xl text-center text-xs shadow-lg shadow-sky-500/30 transition flex flex-col items-center justify-center space-y-1">
+                        <i class="fa-solid fa-gem text-sm"></i>
+                        <span>Top Up</span>
+                    </a>
+                    <a href="#akun" class="bg-slate-800/90 border border-slate-700 text-white font-semibold py-2.5 px-2 rounded-xl text-center text-xs transition flex flex-col items-center justify-center space-y-1">
+                        <i class="fa-solid fa-user-shield text-sm text-amber-400"></i>
+                        <span>Beli Akun</span>
+                    </a>
+                    <a href="#bantuan" class="bg-slate-800/90 border border-slate-700 text-white font-semibold py-2.5 px-2 rounded-xl text-center text-xs transition flex flex-col items-center justify-center space-y-1">
+                        <i class="fa-solid fa-headset text-sm text-purple-400"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-1 pt-2 border-t border-slate-800 text-[9px] text-slate-400 font-semibold text-center">
+                    <div class="bg-slate-900/50 p-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-shield-check text-sky-400 mr-1"></i>Garansi Aman</div>
+                    <div class="bg-slate-900/50 p-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-bolt text-amber-400 mr-1"></i>Proses Instan</div>
+                    <div class="bg-slate-900/50 p-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-headset text-purple-400 mr-1"></i>CS 24 Jam</div>
+                </div>
+            </div>
+        </div>
+        <!-- SECTION TOP UP DIAMOND FF -->
+        <section id="topup" class="bg-xerozCard border border-xerozCardBorder rounded-3xl p-5 space-y-4 shadow-xl">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <div class="bg-sky-500/20 p-2.5 rounded-xl text-sky-400 border border-sky-500/30">
+                        <i class="fa-solid fa-gem text-sm"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-extrabold text-sm uppercase tracking-wide">Top Up Diamond Free Fire</h2>
+                        <p class="text-[10px] text-slate-400">Masukkan ID & Pilih Nominal Diamond</p>
+                    </div>
+                </div>
+                <span class="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-bold">OTOMATIS</span>
+            </div>
+
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1 font-semibold">Player ID Free Fire</label>
+                    <div class="flex space-x-2">
+                        <input type="number" id="ffId" placeholder="Contoh ID: 123456789" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-xs focus:outline-none focus:border-sky-400 text-white font-medium">
+                        <button type="button" onclick="cekAkunFF()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 rounded-xl text-xs font-bold text-sky-400 transition">Cek</button>
+                    </div>
+                    <p id="statusCek" class="text-[10px] mt-1 font-semibold"></p>
+                </div>
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1 font-semibold">Nomor WhatsApp (Bukti Transaksi)</label>
+                    <input type="text" id="userWa" placeholder="08xxxxxxxxxx" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-xs focus:outline-none focus:border-sky-400 text-white font-medium">
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-[11px] text-slate-400 font-semibold">Pilih Paket Diamond</label>
+                <div class="grid grid-cols-2 gap-2.5" id="nominalList">
+                    <div onclick="selectItem(this, '70 Diamond (Rp 10.000)')" class="cursor-pointer border border-slate-800 hover:border-sky-400 bg-slate-950/80 p-3 rounded-xl transition text-center space-y-1 group">
+                        <div class="font-black text-xs text-slate-200">70 Diamond</div>
+                        <div class="text-[11px] text-sky-400 font-extrabold">Rp 10.000</div>
+                    </div>
+                    <div onclick="selectItem(this, '140 Diamond (Rp 20.000)')" class="cursor-pointer border border-slate-800 hover:border-sky-400 bg-slate-950/80 p-3 rounded-xl transition text-center space-y-1 group">
+                        <div class="font-black text-xs text-slate-200">140 Diamond</div>
+                        <div class="text-[11px] text-sky-400 font-extrabold">Rp 20.000</div>
+                    </div>
+                    <div onclick="selectItem(this, '355 Diamond (Rp 50.000)')" class="cursor-pointer border border-slate-800 hover:border-sky-400 bg-slate-950/80 p-3 rounded-xl transition text-center space-y-1 group">
+                        <div class="font-black text-xs text-slate-200">355 Diamond</div>
+                        <div class="text-[11px] text-sky-400 font-extrabold">Rp 50.000</div>
+                    </div>
+                    <div onclick="selectItem(this, '720 Diamond (Rp 100.000)')" class="cursor-pointer border border-slate-800 hover:border-sky-400 bg-slate-950/80 p-3 rounded-xl transition text-center space-y-1 group">
+                        <div class="font-black text-xs text-slate-200">720 Diamond</div>
+                        <div class="text-[11px] text-sky-400 font-extrabold">Rp 100.000</div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="checkoutTopup()" class="w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:opacity-90 text-white font-extrabold py-3.5 rounded-xl text-xs transition shadow-lg shadow-sky-500/25 flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp text-base text-emerald-300"></i>
+                <span>Top Up Instant via WhatsApp</span>
+            </button>
+        </section>
+
+        <!-- SECTION MARKETPLACE AKUN -->
+        <section id="akun" class="bg-xerozCard border border-xerozCardBorder rounded-3xl p-5 space-y-4 shadow-xl">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <div class="bg-amber-500/20 p-2.5 rounded-xl text-amber-400 border border-amber-500/30">
+                        <i class="fa-solid fa-user-shield text-sm"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-extrabold text-sm uppercase tracking-wide">Katalog Akun Free Fire</h2>
+                        <p class="text-[10px] text-slate-400">Akun Sultan, Spek Turnamen, & Budget</p>
+                    </div>
+                </div>
+                <span class="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded-full font-bold">READY STOCK</span>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-slate-950 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl group">
+                    <div class="relative h-40 overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop" alt="Akun SG2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-75">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-2.5 right-2.5 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 text-[9px] font-black px-2.5 py-1 rounded-md shadow uppercase tracking-wider">FULL SG2 UNGU</span>
+                    </div>
+                    <div class="p-4 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <h3 class="font-extrabold text-xs text-white">Akun Sultan SG2 Ungu + Old Season</h3>
+                            <p class="text-[10px] text-slate-400">Level 65 | Emote Melimpah | Bind Google Aman</p>
+                            <div class="text-sky-400 font-black text-sm pt-0.5">Rp 350.000</div>
+                        </div>
+                        <button onclick="beliAkun('Akun Sultan SG2 Ungu (Rp 350.000)')" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:opacity-90 text-white font-extrabold px-4 py-2.5 rounded-xl text-xs transition shadow-lg shadow-sky-500/20">
+                            Beli Akun
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl group">
+                    <div class="relative h-40 overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=600&auto=format&fit=crop" alt="Akun Incubator" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-75">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-2.5 right-2.5 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-[9px] font-black px-2.5 py-1 rounded-md shadow uppercase tracking-wider">INCUBATOR LOBBY</span>
+                    </div>
+                    <div class="p-4 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <h3 class="font-extrabold text-xs text-white">Akun Spek Turnamen Pro</h3>
+                            <p class="text-[10px] text-slate-400">Level 58 | Bundle Langka | Bind VK / FB</p>
+                            <div class="text-sky-400 font-black text-sm pt-0.5">Rp 175.000</div>
+                        </div>
+                        <button onclick="beliAkun('Akun Spek Turnamen (Rp 175.000)')" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:opacity-90 text-white font-extrabold px-4 py-2.5 rounded-xl text-xs transition shadow-lg shadow-sky-500/20">
+                            Beli Akun
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl group">
+                    <div class="relative h-40 overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop" alt="Akun Pemula" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-75">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-2.5 right-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 text-[9px] font-black px-2.5 py-1 rounded-md shadow uppercase tracking-wider">BUDGET PLAYER</span>
+                    </div>
+                    <div class="p-4 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <h3 class="font-extrabold text-xs text-white">Akun Pemula Murah Meriah</h3>
+                            <p class="text-[10px] text-slate-400">Level 42 | Polos Bagus | Bind Google Aman</p>
+                            <div class="text-sky-400 font-black text-sm pt-0.5">Rp 50.000</div>
+                        </div>
+                        <button onclick="beliAkun('Akun Pemula Murah (Rp 50.000)')" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:opacity-90 text-white font-extrabold px-4 py-2.5 rounded-xl text-xs transition shadow-lg shadow-sky-500/20">
+                            Beli Akun
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION PUSAT BANTUAN -->
+        <section id="bantuan" class="bg-xerozCard border border-xerozCardBorder rounded-3xl p-5 space-y-4 shadow-xl">
+            <div class="flex items-center space-x-2.5">
+                <div class="bg-purple-500/20 p-2.5 rounded-xl text-purple-400 border border-purple-500/30">
+                    <i class="fa-solid fa-headset text-sm"></i>
+                </div>
+                <div>
+                    <h2 class="font-extrabold text-sm uppercase tracking-wide">Pusat Bantuan & Rekber</h2>
+                    <p class="text-[10px] text-slate-400">Ada kendala transaksi? Hubungi admin kami 24/7</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl space-y-3">
+                <div class="flex items-start space-x-3">
+                    <i class="fa-solid fa-circle-question text-sky-400 text-base mt-0.5"></i>
+                    <div>
+                        <h4 class="font-bold text-xs text-white">Bagaimana cara sistem Rekber Akun Xeroz Store?</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5 leading-relaxed">Pembeli transfer dana ke admin -> Admin amankan data akun -> Pembeli cek akun di game -> Setelah aman, dana diteruskan ke penjual.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3 pt-2 border-t border-slate-900">
+                    <i class="fa-solid fa-clock text-amber-400 text-base mt-0.5"></i>
+                    <div>
+                        <h4 class="font-bold text-xs text-white">Berapa lama proses Top Up Diamond FF?</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5 leading-relaxed">Top up diproses instan 1-5 menit setelah pembayaran dikonfirmasi oleh admin WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://wa.me/628132254940?text=Halo%20Admin%20Xeroz%20Store,%20saya%20butuh%20bantuan" target="_blank" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i>
+                <span>Chat Admin CS (08132254940)</span>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- BOTTOM NAVBAR -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-xerozCard/95 backdrop-blur-xl border-t border-xerozCardBorder z-50 py-2.5 px-6">
+        <div class="max-w-md mx-auto flex items-center justify-between text-center">
+            <a href="#" class="flex flex-col items-center text-sky-400 space-y-0.5">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[10px] font-bold">Beranda</span>
+            </a>
+            <a href="#topup" class="flex flex-col items-center text-slate-400 hover:text-white space-y-0.5">
+                <i class="fa-solid fa-gem text-base"></i>
+                <span class="text-[10px] font-medium">Top Up</span>
+            </a>
+            <a href="https://wa.me/628132254940?text=Halo%20Admin%20Xeroz%20Store" target="_blank" class="-mt-6 bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-sky-500/50 border-4 border-xerozDark">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+            </a>
+            <a href="#akun" class="flex flex-col items-center text-slate-400 hover:text-white space-y-0.5">
+                <i class="fa-solid fa-user-shield text-base"></i>
+                <span class="text-[10px] font-medium">Beli Akun</span>
+            </a>
+            <a href="#bantuan" class="flex flex-col items-center text-slate-400 hover:text-white space-y-0.5">
+                <i class="fa-solid fa-headset text-base"></i>
+                <span class="text-[10px] font-medium">Bantuan</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- SCRIPT -->
+    <script>
+        let selectedProduct = "";
+
+        function selectItem(element, productName) {
+            const items = document.querySelectorAll('#nominalList > div');
+            items.forEach(el => {
+                el.classList.remove('border-sky-400', 'bg-slate-900', 'shadow-lg');
+            });
+            element.classList.add('border-sky-400', 'bg-slate-900', 'shadow-lg');
+            selectedProduct = productName;
+        }
+
+        function cekAkunFF() {
+            const ffId = document.getElementById('ffId').value;
+            const statusCek = document.getElementById('statusCek');
+            
+            if(!ffId || ffId.length < 5) {
+                statusCek.style.color = '#f87171';
+                statusCek.innerText = '⚠️ Masukkan Player ID Free Fire yang valid!';
+                return;
+            }
+
+            statusCek.style.color = '#38bdf8';
+            statusCek.innerText = '🔍 Memeriksa server Garena...';
+
+            setTimeout(() => {
+                statusCek.style.color = '#34d399';
+                statusCek.innerText = '✅ ID Ditemukan (Player Aktif)';
+            }, 600);
+        }
+
+        function checkoutTopup() {
+            const ffId = document.getElementById('ffId').value;
+            const userWa = document.getElementById('userWa').value;
+
+            if(!ffId) {
+                alert('Silakan masukkan Player ID Free Fire terlebih dahulu!');
+                return;
+            }
+            if(!selectedProduct) {
+                alert('Silakan pilih nominal diamond terlebih dahulu!');
+                return;
+            }
+
+            const pesan = `Halo Admin Xeroz Store, saya ingin Top Up Diamond Free Fire.\n\n*Player ID:* ${ffId}\n*Nominal:* ${selectedProduct}\n*No WhatsApp:* ${userWa ? userWa : '-'}\n\nMohon diproses ya Kak!`;
+            window.open(`https://wa.me/628132254940?text=${encodeURIComponent(pesan)}`, '_blank');
+        }
+
+        function beliAkun(namaAkun) {
+            const pesan = `Halo Admin Xeroz Store, saya tertarik untuk membeli akun:\n\n*${namaAkun}*\n\nBagaimana cara transaksi Rekber-nya Kak?`;
+            window.open(`https://wa.me/628132254940?text=${encodeURIComponent(pesan)}`, '_blank');
+        }
+    </script>
+</body>
+                  </html>
+                      
