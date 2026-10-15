@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xeroz Top Up - Top Up Games Terpercaya</title>
+    <!-- FontAwesome untuk Icon & Media Sosial -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 0%, #2e1065 0%, #17072e 40%, #090314 100%);
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Hujan Diamond */
+        .diamond-particle {
+            position: fixed;
+            color: #38bdf8;
+            font-size: 1.5rem;
+            animation: fall linear forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Header / Navbar Ala Codashop */
+        header {
+            background: rgba(11, 4, 20, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.8rem 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .logo-area {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-area span {
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .btn-daftar {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-daftar:hover {
+            opacity: 0.9;
+        }
+
+        /* SIDEBAR DRAWER (MENU GARIS TIGA) */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: #190a2e;
+            z-index: 2001;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border-right: 2px solid #3b2063;
+        }
+
+        .drawer.open {
+            left: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .drawer-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: white;
+            font-weight: 900;
+        }
+
+        .drawer-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .drawer-benefit i {
+            color: #ffcc00;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .drawer-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .drawer-btn-primary {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .drawer-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #ffffff;
+            padding: 0.8rem;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .drawer-footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+        }
+
+        .tukar-voucher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* SEARCH MODAL */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 4, 20, 0.95);
+            z-index: 3000;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .search-input-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 1rem;
+            background: #23133c;
+            border: 2px solid #ffcc00;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            margin-top: 2rem;
+        }
+
+        /* Banner */
+        .banner-wrapper {
+            max-width: 900px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .banner-slide {
+            background: linear-gradient(135deg, #7c3aed, #db2777, #f59e0b);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .banner-slide h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .banner-slide p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Section */
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-header {
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        /* Grid Game */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .game-card {
+            background: rgba(35, 19, 60, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .game-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 204, 0, 0.5);
+        }
+
+        .game-card.active {
+            border-color: #ffcc00;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+            background: rgba(45, 25, 75, 0.9);
+        }
+
+        .game-icon-box {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.3rem;
+            background: rgba(15, 7, 30, 0.6);
+        }
+
+        .game-card .title {
+            padding: 0.6rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Panel Order */
+        .order-panel {
+            background: rgba(27, 14, 46, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.8rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .step-label {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .step-num {
+            background: #ffcc00;
+            color: #120822;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 900;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(11, 4, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            margin-bottom: 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .input-box:focus {
+            border-color: #ffcc00;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+        }
+
+        .row-input {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .row-input {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Nominal Grid */
+        .nominal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 1.2rem;
+        }
+
+        .nominal-item {
+            background: rgba(18, 8, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nominal-item.selected, .nominal-item:hover {
+            border-color: #ffcc00;
+            background: rgba(255, 204, 0, 0.08);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.2);
+        }
+
+        .nominal-item .item-title {
+            font-size: 0.88rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nominal-item .item-price {
+            font-size: 0.82rem;
+            color: #ffcc00;
+            margin-top: 3px;
+            font-weight: 600;
+        }
+
+        /* Payment Grid */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 500px) {
+            .payment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .pay-item {
+            background: rgba(18, 8, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: bold;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pay-item.selected, .pay-item:hover {
+            border-color: #22c55e;
+            color: #fff;
+            background: rgba(34, 197, 94, 0.1);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Tombol Beli */
+        .btn-checkout {
+            width: 100%;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-checkout:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        /* NEWS & UPDATES SECTION */
+        .news-section {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .news-card {
+            background: rgba(35, 19, 60, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            border-color: #ffcc00;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .news-card .news-content {
+            padding: 1.1rem;
+        }
+
+        .news-card h4 {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+
+        .news-card p {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+        }
+
+        /* MODAL POPUP */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 2, 10, 0.85);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1f1135, #110722);
+            border: 2px solid #ffcc00;
+            border-radius: 16px;
+            padding: 2.2rem;
+            max-width: 500px;
+            width: 100%;
+            color: white;
+            position: relative;
+            text-align: left;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.6rem;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        /* FOOTER HIJAU NEON */
+        .footer-neon-section {
+            background-color: #ccff00;
+            color: #120822;
+            padding: 2.5rem 1rem;
+            margin-top: 3rem;
+            box-shadow: 0 -10px 30px rgba(204, 255, 0, 0.2);
+        }
+
+        .footer-neon-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-block {
+            margin-bottom: 1.8rem;
+        }
+
+        .footer-block h3 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-block p {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .help-btn {
+            display: inline-block;
+            background: rgba(18, 8, 34, 0.1);
+            border: 2px solid #120822;
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #120822;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .help-btn:hover {
+            background: rgba(18, 8, 34, 0.2);
+        }
+
+        .area-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(18, 8, 34, 0.1);
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-icons a {
+            color: #120822;
+            transition: opacity 0.2s;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.6;
+        }
+
+        .final-footer {
+            background-color: #1e1035;
+            color: #e2e8f0;
+            padding: 1.8rem 1rem;
+            text-align: center;
+            font-size: 0.82rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .final-footer .links {
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .final-footer .links span {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .final-footer .links span:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+        .final-footer .brand-logo {
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-top: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: #ffcc00;
+        }
+    </style>
+  </head>
+  <body>
+
+    <!-- Header / Navbar dengan Tombol Menu & Search -->
+    <header>
+        <div class="nav-left">
+            <button class="menu-toggle" onclick="toggleDrawer()"><i class="fa-solid fa-bars"></i></button>
+            <div class="logo-area">Xeroz<span>Top Up</span></div>
+        </div>
+        <div class="nav-right">
+            <button class="nav-icon-btn" onclick="toggleSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="btn-daftar" onclick="openModal('Daftar Xeroz', 'Fitur pendaftaran akun member akan segera hadir untuk kemudahan transaksi Anda!')">Daftar</button>
+        </div>
+    </header>
+
+    <!-- SIDEBAR DRAWER (MENU SAMPING KIRI) -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+    <div class="drawer" id="sideDrawer">
+        <div>
+            <div class="drawer-header">
+                <div class="logo-area" style="font-size: 1.2rem;">Xeroz<span>Top Up</span></div>
+                <button class="drawer-close" onclick="toggleDrawer()">&times;</button>
+            </div>
+            <div class="drawer-content">
+                <h3>Daftar Xeroz Top Up sekarang!</h3>
+                <div class="drawer-benefit">
+                    <i class="fa-solid fa-gem"></i>
+                    <span>Jadilah yang pertama mengetahui promo dan penawaran eksklusif!</span>
+                </div>
+                <div class="drawer-benefit">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Akses riwayat pesanan anda dengan mudah</span>
+                </div>
+                <div class="drawer-benefit">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Lebih cepat dan aman</span>
+                </div>
+                <div class="drawer-buttons">
+                    <button class="drawer-btn-primary" onclick="openModal('Daftar Akun', 'Silakan hubungi admin via WhatsApp untuk pendaftaran akun member.')">Daftar sekarang, gratis</button>
+                    <button class="drawer-btn-secondary" onclick="openModal('Masuk Akun', 'Fitur login akun member sedang dalam tahap pengembangan.')">Masuk</button>
+                </div>
+            </div>
+        </div>
+        <div class="drawer-footer">
+            <div class="tukar-voucher" onclick="openModal('Tukar Kode Voucher', 'Masukkan kode voucher promo Anda saat melakukan konfirmasi pembayaran via WhatsApp admin.')">
+                <i class="fa-solid fa-ticket"></i> Tukar Kode voucher
+            </div>
+        </div>
+    </div>
+
+    <!-- SEARCH MODAL -->
+    <div class="search-modal" id="searchModal">
+        <div style="display: flex; justify-content: flex-end; max-width: 600px; margin: 0 auto;">
+            <button onclick="toggleSearch()" style="background:none; border:none; color:white; font-size: 1.8rem; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <input type="text" class="search-input-box" placeholder="Cari game atau voucher..." autofocus>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner-wrapper">
+        <div class="banner-slide">
+            <h2>🔥 TOP UP TERCEPAT & TERPERCAYA</h2>
+            <p>Pilih game favoritmu di bawah, proses instan langsung masuk!</p>
+        </div>
+    </div>
+
+    <!-- Section Utama -->
+    <div class="section-container">
+        <div class="section-header">Unggulan</div>
+        
+        <!-- Grid Game -->
+        <div class="game-grid">
+            <div class="game-card active" onclick="switchGame('ff', this)">
+                <div class="game-icon-box" style="color: #ff4757;"><i class="fa-solid fa-fire"></i></div>
+                <div class="title">Free Fire</div>
+            </div>
+            <div class="game-card" onclick="switchGame('ml', this)">
+                <div class="game-icon-box" style="color: #38bdf8;"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="title">Mobile Legends</div>
+            </div>
+            <div class="game-card" onclick="switchGame('roblox', this)">
+                <div class="game-icon-box" style="color: #ffffff;"><i class="fa-solid fa-cube"></i></div>
+                <div class="title">Roblox</div>
+            </div>
+        </div>
+
+        <!-- Panel Form -->
+        <div class="order-panel">
+            <!-- STEP 1 -->
+            <div class="step-label"><span class="step-num">1</span> Masukkan Data Akun</div>
+            <div id="inputDataContainer" class="row-input">
+                <input type="text" id="userId" class="input-box" placeholder="Masukkan ID Player">
+                <input type="text" id="zoneId" class="input-box" placeholder="Server ID" style="display:none;">
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-label"><span class="step-num">2</span> Pilih Nominal Top Up</div>
+            <div class="nominal-grid" id="nominalList"></div>
+
+            <!-- STEP 3 -->
+            <div class="step-label"><span class="step-num">3</span> Pilih Pembayaran</div>
+            <div class="payment-grid">
+                <div class="pay-item" onclick="selectPay(this)">QRIS / All Pay</div>
+                <div class="pay-item" onclick="selectPay(this)">DANA</div>
+                <div class="pay-item" onclick="selectPay(this)">OVO</div>
+                <div class="pay-item" onclick="selectPay(this)">GOPAY</div>
+                <div class="pay-item" onclick="selectPay(this)">BRImo</div>
+                <div class="pay-item" onclick="selectPay(this)">Alfa / Indomaret</div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step-label"><span class="step-num">4</span> Nomor WhatsApp Pembeli</div>
+            <input type="text" id="buyerPhone" class="input-box" placeholder="Nomor WhatsApp (Contoh: 08123456789)">
+
+            <!-- Tombol Beli -->
+            <button class="btn-checkout" onclick="sendToWhatsApp()">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Beli Sekarang via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- NEWS AND UPDATES SECTION -->
+    <div class="news-section">
+        <div class="section-header">News and Updates</div>
+        <div class="news-grid">
+            <div class="news-card" onclick="openModal('Cek Info Promo', 'Dapatkan info promo menarik, diskon diamond harian, dan bonus saldo setiap melakukan top up di Xeroz Top Up.')">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="Promo">
+                <div class="news-content">
+                    <h4>Cek Info Promo</h4>
+                    <p>Promo dan Berita update lainnya seputar game kesayanganmu.</p>
+                </div>
+            </div>
+            <div class="news-card" onclick="openModal('Waspada Penipuan APK!', 'Pastikan top-up hanya di situs resmi Xeroz Top Up. Kami tidak pernah meminta password atau data login akun game Anda.')">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80" alt="Waspada">
+                <div class="news-content">
+                    <h4>Waspada Penipuan APK!</h4>
+                    <p>Pastikan top-up hanya di situs resmi Xeroz Top Up.</p>
+                </div>
+            </div>
+            <div class="news-card" onclick="openModal('Kenali Modus Penipuan Gim', 'Unduh buku saku anti penipuan dan jaga keamanan akunmu dari link phising atau oknum yang mengatasnamakan admin Xeroz Top Up.')">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Modus">
+                <div class="news-content">
+                    <h4>Kenali Modus Penipuan Gim</h4>
+                    <p>Unduh buku saku anti penipuan dan jaga keamanan akunmu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP -->
+    <div id="newsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="color: #ffcc00; margin-bottom: 12px; font-size: 1.2rem;"></h3>
+            <p id="modalDesc" style="font-size: 0.95rem; line-height: 1.6; color: #cbd5e1;"></p>
+        </div>
+    </div>
+
+    <!-- FOOTER HIJAU NEON -->
+    <div class="footer-neon-section">
+        <div class="footer-neon-container">
+            <div class="footer-block" onclick="openModal('Untuk Penerbit', 'Xeroz Top Up adalah platform layanan top-up game terpercaya yang siap bekerja sama dengan penerbit game lokal maupun internasional.')" style="cursor: pointer;">
+                <h3>Untuk Penerbit</h3>
+                <p>Xeroz Top Up</p>
+            </div>
+
+            <div class="footer-block">
+                <h3>Butuh Bantuan?</h3>
+                <a href="https://wa.me/628132254940" target="_blank" class="help-btn"><i class="fa-regular fa-comment-dots"></i> Hubungi Kami <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i></a>
+            </div>
+
+            <div class="footer-block">
+                <h3>Area</h3>
+                <div class="area-box" onclick="openModal('Area Layanan', 'Xeroz Top Up melayani transaksi penuh untuk seluruh wilayah Indonesia dengan dukungan berbagai metode pembayaran lokal.')" style="cursor: pointer;">
+                    <span>🇮🇩</span> Indonesia
+                </div>
+            </div>
+
+            <div class="footer-block">
+                <h3>Dapatkan berita Xeroz Top Up di IG & WhatsApp saja</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/628132254940" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #120822;"></i></a>
+                    <a href="https://www.instagram.com/alipstiansyh?psln=MWwwOGgyMXlkNGIwbw==" target="_blank"><i class="fa-brands fa-instagram" style="color: #120822;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER AKHIR -->
+    <div class="final-footer">
+        <div class="links">
+            <span onclick="openModal('Pemasaran dan Kemitraan', 'Hubungi tim pemasaran kami melalui WhatsApp admin untuk kerja sama kemitraan.')">Pemasaran dan Kemitraan</span> . 
+            <span onclick="openModal('Untuk Penerbit Game', 'Daftarkan game Anda dan perluas jangkauan pemain bersama Xeroz Top Up.')">Untuk Penerbit Game</span> . 
+            <span onclick="openModal('Syarat & Ketentuan', 'Semua transaksi bersifat final dan diproses secara instan sesuai data yang valid.')">Syarat & Ketentuan</span> . 
+            <span onclick="openModal('Kebijakan Privasi', 'Kami menjaga kerahasiaan data pribadi dan informasi akun game Anda dengan aman.')">Kebijakan Privasi</span> . 
+            <span onclick="openModal('Bounty bug', 'Laporkan kendala sistem atau bug kepada admin untuk mendapatkan reward menarik.')">Bounty bug</span> . 
+            <span onclick="openModal('Menjadi distributor', 'Bergabunglah menjadi bagian dari jaringan distributor resmi Xeroz Top Up.')">Menjadi distributor</span>
+        </div>
+        <div onclick="openModal('Hak Cipta', 'Seluruh hak cipta dilindungi undang-undang di bawah naungan Xeroz Top Up.')" style="cursor: pointer; margin-bottom: 6px;">&copy; Hak Cipta Xeroz Top Up</div>
+        <div class="brand-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" style="cursor: pointer;">
+            <i class="fa-solid fa-gem"></i> XEROZ TOP UP
+        </div>
+    </div>
+
+    <!-- Script Logika, Animasi, Modal & Drawer -->
+    <script>
+        let currentGame = 'ff';
+        let selectedItemName = '';
+        let selectedItemPrice = '';
+        let selectedPaymentMethod = '';
+
+        const gameData = {
+            ff: [
+                { name: '70 Diamonds', price: 'Rp 10.000' },
+                { name: '140 Diamonds', price: 'Rp 20.000' },
+                { name: '355 Diamonds', price: 'Rp 50.000' },
+                { name: '720 Diamonds', price: 'Rp 100.000' }
+            ],
+            ml: [
+                { name: '85 Diamonds', price: 'Rp 20.000' },
+                { name: '170 Diamonds', price: 'Rp 40.000' },
+                { name: '284 Diamonds', price: 'Rp 65.000' },
+                { name: '568 Diamonds', price: 'Rp 130.000' }
+            ],
+            roblox: [
+                { name: '100 Robux', price: 'Rp 20.000' },
+                { name: '400 Robux', price: 'Rp 75.000' },
+                { name: '800 Robux', price: 'Rp 145.000' },
+                { name: '1700 Robux', price: 'Rp 290.000' }
+            ]
+        };
+
+        function triggerDiamondAnimation() {
+            for (let i = 0; i < 12; i++) {
+                let d = document.createElement('div');
+                d.className = 'diamond-particle';
+                d.innerHTML = '<i class="fa-solid fa-gem"></i>';
+                d.style.left = Math.random() * window.innerWidth + 'px';
+                d.style.top = '-30px';
+                d.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
+                document.body.appendChild(d);
+                setTimeout(() => d.remove(), 2500);
+            }
+        }
+
+        window.onload = () => {
+            triggerDiamondAnimation();
+            renderNominalList();
+        };
+
+        function toggleDrawer() {
+            const drawer = document.getElementById('sideDrawer');
+            const overlay = document.getElementById('drawerOverlay');
+            drawer.classList.toggle('open');
+            overlay.style.display = drawer.classList.contains('open') ? 'block' : 'none';
+        }
+
+        function toggleSearch() {
+            const searchModal = document.getElementById('searchModal');
+            searchModal.style.display = searchModal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function renderNominalList() {
+            const container = document.getElementById('nominalList');
+            container.innerHTML = '';
+            gameData[currentGame].forEach(item => {
+                let div = document.createElement('div');
+                div.className = 'nominal-item';
+                div.innerHTML = `<div class="item-title">${item.name}</div><div class="item-price">${item.price}</div>`;
+                div.onclick = () => {
+                    document.querySelectorAll('.nominal-item').forEach(el => el.classList.remove('selected'));
+                    div.classList.add('selected');
+                    selectedItemName = item.name;
+                    selectedItemPrice = item.price;
+                };
+                container.appendChild(div);
+            });
+        }
+
+        function switchGame(key, element) {
+            currentGame = key;
+            document.querySelectorAll('.game-card').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            triggerDiamondAnimation();
+
+            const zoneInput = document.getElementById('zoneId');
+            const userIdInput = document.getElementById('userId');
+            
+            if (key === 'ml') {
+                zoneInput.style.display = 'block';
+                zoneInput.placeholder = "Server ID";
+                userIdInput.placeholder = "ID Player";
+            } else if (key === 'roblox') {
+                zoneInput.style.display = 'none';
+                zoneInput.value = '';
+                userIdInput.placeholder = "Username Roblox";
+            } else {
+                zoneInput.style.display = 'none';
+                zoneInput.value = '';
+                userIdInput.placeholder = "ID Player";
+            }
+
+            selectedItemName = '';
+            selectedItemPrice = '';
+            renderNominalList();
+        }
+
+        function selectPay(element) {
+            document.querySelectorAll('.pay-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedPaymentMethod = element.innerText;
+        }
+
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('newsModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('newsModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function sendToWhatsApp() {
+            let gameCardTitle = document.querySelector('.game-card.active .title').innerText;
+            let userId = document.getElementById('userId').value;
+            let zoneId = document.getElementById('zoneId').value;
+            let buyerPhone = document.getElementById('buyerPhone').value;
+
+            if (!userId) {
+                alert('Mohon masukkan ID/Data Player terlebih dahulu!');
+                return;
+            }
+            if (!selectedItemName) {
+                alert('Mohon pilih nominal item top up!');
+                return;
+            }
+            if (!selectedPaymentMethod) {
+                alert('Mohon pilih metode pembayaran!');
+                return;
+            }
+            if (!buyerPhone) {
+                alert('Mohon masukkan nomor WhatsApp kamu!');
+                return;
+            }
+
+            let formatPesan = `Halo Admin Xeroz Top Up, saya ingin melakukan pemesanan:\n\n` +
+                             `🎮 Game: ${gameCardTitle}\n` +
+                             `🆔 ID / Akun: ${userId} ${zoneId ? '('+zoneId+')' : ''}\n` +
+                             `📦 Item: ${selectedItemName}\n` +
+                             `💰 Harga: ${selectedItemPrice}\n` +
+                             `💳 Pembayaran: ${selectedPaymentMethod}\n` +
+                             `📱 No WhatsApp: ${buyerPhone}\n\n` +
+                             `Mohon segera diproses ya kak, terima kasih!`;
+
+            let urlWa = `https://wa.me/628132254940?text=` + encodeURIComponent(formatPesan);
+            window.open(urlWa, '_blank');
+        }
+    </script>
+</body>
+                  </html>
+      
