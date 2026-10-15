@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codashop Indonesia - XerozStore</title>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Reset & Tema Warna Khas Codashop */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #120521; /* Ungu gelap khas Codashop */
+            color: #ffffff;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Hujan Diamond */
+        .diamond-particle {
+            position: fixed;
+            color: #00d2ff;
+            font-size: 1.5rem;
+            animation: fall linear forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: #0b0214;
+            padding: 0.8rem 1.2rem;
+            border-bottom: 2px solid #291245;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+
+        .logo-area span {
+            color: #f36f21; /* Oranye khas logo Codashop */
+        }
+
+        /* Banner Carousel */
+        .banner-wrapper {
+            max-width: 950px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+        }
+
+        .banner-slide {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .banner-slide h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+
+        .banner-slide p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .banner-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 0.8rem;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: #4a287a;
+            border-radius: 50%;
+        }
+
+        .dot.active {
+            background: #ffffff;
+            width: 18px;
+            border-radius: 4px;
+        }
+
+        /* Kotak Promosi Install ke Home Screen */
+        .install-box {
+            max-width: 950px;
+            margin: 0 auto 1.2rem auto;
+            padding: 0 1rem;
+        }
+
+        .install-card {
+            background: #200d38;
+            border: 1px solid #3d1f66;
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+        }
+
+        .install-card strong {
+            color: #f36f21;
+        }
+
+        /* Section Utama */
+        .section-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-header {
+            font-size: 1.15rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        /* Grid Game Sesuai Referensi Screenshot */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 650px) {
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .game-card {
+            background: #1b0a2e;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #2e144d;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .game-card.active {
+            border-color: #f36f21;
+            box-shadow: 0 0 12px rgba(243, 111, 33, 0.4);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 105px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .game-card .title {
+            padding: 0.6rem;
+            font-size: 0.78rem;
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Panel Form Top Up Interaktif */
+        .order-panel {
+            background: #19082b;
+            border: 1px solid #3d1f66;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #f36f21;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-num {
+            background: #f36f21;
+            color: #120521;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 900;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 0.75rem;
+            background: #0f031c;
+            border: 1px solid #3d1f66;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+            margin-bottom: 1rem;
+        }
+
+        .input-box:focus {
+            border-color: #f36f21;
+        }
+
+        .row-input {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .row-input {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Grid Nominal */
+        .nominal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .nominal-item {
+            background: #0f031c;
+            border: 1px solid #3d1f66;
+            border-radius: 8px;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .nominal-item.selected, .nominal-item:hover {
+            border-color: #f36f21;
+            background: rgba(243, 111, 33, 0.05);
+        }
+
+        .nominal-item .item-title {
+            font-size: 0.83rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nominal-item .item-price {
+            font-size: 0.78rem;
+            color: #f36f21;
+            margin-top: 2px;
+        }
+
+        /* Grid Pembayaran */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 1.2rem;
+        }
+
+        @media (max-width: 500px) {
+            .payment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .pay-item {
+            background: #0f031c;
+            border: 1px solid #3d1f66;
+            border-radius: 8px;
+            padding: 0.65rem;
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: bold;
+            color: #ddd;
+            cursor: pointer;
+        }
+
+        .pay-item.selected, .pay-item:hover {
+            border-color: #25d366;
+            color: #fff;
+            background: rgba(37, 211, 102, 0.05);
+        }
+
+        /* Tombol Checkout */
+        .btn-checkout {
+            width: 100%;
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.9;
+        }
+
+        /* Informasi Teks Bawah */
+        .codashop-info {
+            max-width: 950px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-size: 0.78rem;
+            color: #9b7cbd;
+        }
+
+        .codashop-info h3 {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        footer {
+            background: #0b0214;
+            padding: 1.2rem;
+            text-align: center;
+            font-size: 0.72rem;
+            color: #6b4c9a;
+            border-top: 1px solid #291245;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo-area">Coda<span>shop</span></div>
+    </header>
+
+    <!-- Banner Promosi -->
+    <div class="banner-wrapper">
+        <div class="banner-slide">
+            <h2>DAPATKAN SKIN & DIAMOND TERBARU!</h2>
+            <p>Isi Diamond untuk Draw! Jangan sampai ketinggalan.</p>
+        </div>
+        <div class="banner-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Banner Akses Cepat Home Screen -->
+    <div class="install-box">
+        <div class="install-card">
+            <span>Tambahkan Codashop ke home screen Anda dengan akses 1-klik</span>
+            <strong>Tambahkan sekarang &rarr;</strong>
+        </div>
+    </div>
+
+    <!-- Bagian Unggulan -->
+    <div class="section-container">
+        <div class="section-header">Unggulan</div>
+        
+        <!-- Grid Pilihan Game Sesuai Screenshot Codashop Asli -->
+        <div class="game-grid">
+            <div class="game-card active" onclick="switchGame('ml', this)">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=300&q=80" alt="ML">
+                <div class="title">Mobile Legends: Bang Bang</div>
+            </div>
+            <div class="game-card" onclick="switchGame('ff', this)">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=300&q=80" alt="FF">
+                <div class="title">Free Fire Top-up</div>
+            </div>
+            <div class="game-card" onclick="switchGame('steam', this)">
+                <img src="https://images.unsplash.com/photo-1612287233002-91d015381d4e?auto=format&fit=crop&w=300&q=80" alt="Steam">
+                <div class="title">Steam Wallet Code</div>
+            </div>
+            <div class="game-card" onclick="switchGame('roblox', this)">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=80" alt="Roblox">
+                <div class="title">Roblox Gift Cards</div>
+            </div>
+            <div class="game-card" onclick="switchGame('magic', this)">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=300&q=80" alt="Magic Chess">
+                <div class="title">Magic Chess: Go Go</div>
+            </div>
+            <div class="game-card" onclick="switchGame('valorant', this)">
+                <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=300&q=80" alt="Valorant">
+                <div class="title">VALORANT</div>
+            </div>
+        </div>
+
+        <!-- PANEL FORM TOP UP DINAMIS -->
+        <div class="order-panel">
+            <!-- STEP 1 -->
+            <div class="step-label"><span class="step-num">1</span> Masukkan Data Akun</div>
+            <div id="inputDataContainer" class="row-input">
+                <input type="text" id="userId" class="input-box" placeholder="Masukkan ID User">
+                <input type="text" id="zoneId" class="input-box" placeholder="Server ID">
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-label"><span class="step-num">2</span> Pilih Nominal Top Up</div>
+            <div class="nominal-grid" id="nominalList"></div>
+
+            <!-- STEP 3 -->
+            <div class="step-label"><span class="step-num">3</span> Pilih Pembayaran</div>
+            <div class="payment-grid">
+                <div class="pay-item" onclick="selectPay(this)">QRIS / All Pay</div>
+                <div class="pay-item" onclick="selectPay(this)">DANA</div>
+                <div class="pay-item" onclick="selectPay(this)">OVO</div>
+                <div class="pay-item" onclick="selectPay(this)">GOPAY</div>
+                <div class="pay-item" onclick="selectPay(this)">BRImo</div>
+                <div class="pay-item" onclick="selectPay(this)">Alfa / Indomaret</div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step-label"><span class="step-num">4</span> Nomor WhatsApp Penerima Bukti</div>
+            <input type="text" id="buyerPhone" class="input-box" placeholder="Nomor WhatsApp (Contoh: 08123456789)">
+
+            <!-- Tombol Beli -->
+            <button class="btn-checkout" onclick="sendToWhatsApp()">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> Beli Sekarang & Bayar via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Deskripsi Bawah Codashop -->
+    <div class="codashop-info">
+        <h3>Codashop Indonesia</h3>
+        <p>Website top-up terbesar, tercepat dan terpercaya di Indonesia. Setiap bulannya, jutaan gamers menggunakan layanan kami untuk pembelian kredit game tanpa registrasi, instan langsung masuk!</p>
+        <p style="margin-top: 6px;">Kontak Admin Resmi: <strong>0813-2254-940</strong></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Codashop / XerozStore - All Rights Reserved.
+    </footer>
+
+    <!-- Script Logika & Animasi -->
+    <script>
+        let currentGame = 'ml';
+        let selectedItemName = '';
+        let selectedItemPrice = '';
+        let selectedPaymentMethod = '';
+
+        const gameData = {
+            ml: [
+                { name: '85 Diamonds', price: 'Rp 20.000' },
+                { name: '170 Diamonds', price: 'Rp 40.000' },
+                { name: '284 Diamonds', price: 'Rp 65.000' },
+                { name: '568 Diamonds', price: 'Rp 130.000' }
+            ],
+            ff: [
+                { name: '70 Diamonds', price: 'Rp 10.000' },
+                { name: '140 Diamonds', price: 'Rp 20.000' },
+                { name: '355 Diamonds', price: 'Rp 50.000' },
+                { name: '720 Diamonds', price: 'Rp 100.000' }
+            ],
+            steam: [
+                { name: 'Steam Wallet IDR 45.000', price: 'Rp 50.000' },
+                { name: 'Steam Wallet IDR 90.000', price: 'Rp 98.000' },
+                { name: 'Steam Wallet IDR 120.000', price: 'Rp 130.000' }
+            ],
+            roblox: [
+                { name: '100 Robux', price: 'Rp 20.000' },
+                { name: '400 Robux', price: 'Rp 75.000' },
+                { name: '800 Robux', price: 'Rp 145.000' },
+                { name: '1700 Robux', price: 'Rp 290.000' }
+            ],
+            magic: [
+                { name: 'Crystal 100', price: 'Rp 15.000' },
+                { name: 'Crystal 300', price: 'Rp 45.000' },
+                { name: 'Crystal 500', price: 'Rp 75.000' }
+            ],
+            valorant: [
+                { name: '125 Points', price: 'Rp 15.000' },
+                { name: '420 Points', price: 'Rp 50.000' },
+                { name: '700 Points', price: 'Rp 80.000' }
+            ]
+        };
+
+        // Fungsi Animasi Hujan Diamond
+        function triggerDiamondAnimation() {
+            for (let i = 0; i < 12; i++) {
+                let d = document.createElement('div');
+                d.className = 'diamond-particle';
+                d.innerHTML = '<i class="fa-solid fa-gem"></i>';
+                d.style.left = Math.random() * window.innerWidth + 'px';
+                d.style.top = '-30px';
+                d.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
+                document.body.appendChild(d);
+                setTimeout(() => d.remove(), 2500);
+            }
+        }
+
+        window.onload = () => {
+            triggerDiamondAnimation();
+            renderNominalList();
+        };
+
+        function renderNominalList() {
+            const container = document.getElementById('nominalList');
+            container.innerHTML = '';
+            gameData[currentGame].forEach(item => {
+                let div = document.createElement('div');
+                div.className = 'nominal-item';
+                div.innerHTML = `<div class="item-title">${item.name}</div><div class="item-price">${item.price}</div>`;
+                div.onclick = () => {
+                    document.querySelectorAll('.nominal-item').forEach(el => el.classList.remove('selected'));
+                    div.classList.add('selected');
+                    selectedItemName = item.name;
+                    selectedItemPrice = item.price;
+                };
+                container.appendChild(div);
+            });
+        }
+
+        function switchGame(key, element) {
+            currentGame = key;
+            document.querySelectorAll('.game-card').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            triggerDiamondAnimation();
+
+            const zoneInput = document.getElementById('zoneId');
+            const userIdInput = document.getElementById('userId');
+            
+            if (key === 'ml') {
+                zoneInput.style.display = 'block';
+                zoneInput.placeholder = "Server ID";
+                userIdInput.placeholder = "ID User";
+            } else if (key === 'steam' || key === 'roblox') {
+                zoneInput.style.display = 'none';
+                zoneInput.value = '';
+                userIdInput.placeholder = "Username / Email Akun";
+            } else {
+                zoneInput.style.display = 'none';
+                zoneInput.value = '';
+                userIdInput.placeholder = "ID User";
+            }
+
+            selectedItemName = '';
+            selectedItemPrice = '';
+            renderNominalList();
+        }
+
+        function selectPay(element) {
+            document.querySelectorAll('.pay-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedPaymentMethod = element.innerText;
+        }
+
+        function sendToWhatsApp() {
+            let gameCardTitle = document.querySelector('.game-card.active .title').innerText;
+            let userId = document.getElementById('userId').value;
+            let zoneId = document.getElementById('zoneId').value;
+            let buyerPhone = document.getElementById('buyerPhone').value;
+
+            if (!userId) {
+                alert('Mohon masukkan ID User / Data Akun terlebih dahulu!');
+                return;
+            }
+            if (!selectedItemName) {
+                alert('Mohon pilih nominal item top up!');
+                return;
+            }
+            if (!selectedPaymentMethod) {
+                alert('Mohon pilih metode pembayaran!');
+                return;
+            }
+            if (!buyerPhone) {
+                alert('Mohon masukkan nomor WhatsApp kamu!');
+                return;
+            }
+
+           
