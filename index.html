@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xeroz Top Up - Top Up Games Terpercaya</title>
+    <!-- FontAwesome untuk Icon & Media Sosial -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #120822;
+            color: #ffffff;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Hujan Diamond */
+        .diamond-particle {
+            position: fixed;
+            color: #38bdf8;
+            font-size: 1.5rem;
+            animation: fall linear forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Header */
+        header {
+            background-color: #0b0414;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #2e1a47;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .logo-area span {
+            color: #ffcc00;
+        }
+
+        /* Banner */
+        .banner-wrapper {
+            max-width: 900px;
+            margin: 1.2rem auto;
+            padding: 0 1rem;
+        }
+
+        .banner-slide {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .banner-slide h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+
+        .banner-slide p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Section */
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-header {
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        /* Grid Game */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .game-card {
+            background: #23133c;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #3b2063;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .game-card.active {
+            border-color: #ffcc00;
+            box-shadow: 0 0 12px rgba(255, 204, 0, 0.4);
+        }
+
+        .game-icon-box {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            background: #1b0e2e;
+        }
+
+        .game-card .title {
+            padding: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Panel Order */
+        .order-panel {
+            background: #1b0e2e;
+            border: 1px solid #3b2063;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-num {
+            background: #ffcc00;
+            color: #120822;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 900;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 0.75rem;
+            background: #120822;
+            border: 1px solid #3b2063;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+            margin-bottom: 1rem;
+        }
+
+        .input-box:focus {
+            border-color: #ffcc00;
+        }
+
+        .row-input {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .row-input {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Nominal Grid */
+        .nominal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .nominal-item {
+            background: #120822;
+            border: 1px solid #3b2063;
+            border-radius: 8px;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .nominal-item.selected, .nominal-item:hover {
+            border-color: #ffcc00;
+            background: rgba(255, 204, 0, 0.05);
+        }
+
+        .nominal-item .item-title {
+            font-size: 0.83rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nominal-item .item-price {
+            font-size: 0.78rem;
+            color: #ffcc00;
+            margin-top: 2px;
+        }
+
+        /* Payment Grid */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 1.2rem;
+        }
+
+        @media (max-width: 500px) {
+            .payment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .pay-item {
+            background: #120822;
+            border: 1px solid #3b2063;
+            border-radius: 8px;
+            padding: 0.65rem;
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: bold;
+            color: #ddd;
+            cursor: pointer;
+        }
+
+        .pay-item.selected, .pay-item:hover {
+            border-color: #25d366;
+            color: #fff;
+            background: rgba(37, 211, 102, 0.05);
+        }
+
+        /* Tombol Beli */
+        .btn-checkout {
+            width: 100%;
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.9;
+        }
+
+        /* NEWS & UPDATES SECTION */
+        .news-section {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .news-card {
+            background: #23133c;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #3b2063;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            border-color: #ffcc00;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+
+        .news-card .news-content {
+            padding: 1rem;
+        }
+
+        .news-card h4 {
+            font-size: 0.95rem;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+        }
+
+        .news-card p {
+            font-size: 0.8rem;
+            color: #b19cd9;
+        }
+
+        /* MODAL POPUP BERITA */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: #1b0e2e;
+            border: 2px solid #ffcc00;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            color: white;
+            position: relative;
+            text-align: left;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        /* FOOTER HIJAU NEON */
+        .footer-neon-section {
+            background-color: #ccff00;
+            color: #120822;
+            padding: 2.5rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-neon-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-block {
+            margin-bottom: 1.8rem;
+        }
+
+        .footer-block h3 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-block p {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .help-btn {
+            display: inline-block;
+            background: rgba(18, 8, 34, 0.1);
+            border: 2px solid #120822;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #120822;
+            text-decoration: none;
+            margin-top: 0.5rem;
+        }
+
+        .area-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(18, 8, 34, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-icons a {
+            color: #120822;
+            transition: opacity 0.2s;
+        }
+
+        .final-footer {
+            background-color: #e6ccff;
+            color: #120822;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .final-footer .links {
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .final-footer .brand-logo {
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+    </style>
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-area">Xeroz<span>Top Up</span></div>
+    </header>
+
+    <!-- Banner -->
+    <div class="banner-wrapper">
+        <div class="banner-slide">
+            <h2>🔥 TOP UP TERCEPAT & TERPERCAYA</h2>
+            <p>Pilih game favoritmu di bawah, proses instan langsung masuk!</p>
+        </div>
+    </div>
+
+    <!-- Section Utama -->
+    <div class="section-container">
+        <div class="section-header">Unggulan</div>
+        
+        <!-- Grid Game (FF, ML dengan Logo Jelas, Roblox) -->
+        <div class="game-grid">
+            <div class="game-card active" onclick="switchGame('ff', this)">
+                <div class="game-icon-box" style="color: #ff4757;"><i class="fa-solid fa-fire"></i></div>
+                <div class="title">Free Fire</div>
+            </div>
+            <div class="game-card" onclick="switchGame('ml', this)">
+                <div class="game-icon-box" style="color: #38bdf8;"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="title">Mobile Legends</div>
+            </div>
+            <div class="game-card" onclick="switchGame('roblox', this)">
+                <div class="game-icon-box" style="color: #ffffff;"><i class="fa-solid fa-cube"></i></div>
+                <div class="title">Roblox</div>
+            </div>
+        </div>
+
+        <!-- Panel Form -->
+        <div class="order-panel">
+            <!-- STEP 1 -->
+            <div class="step-label"><span class="step-num">1</span> Masukkan Data Akun</div>
+            <div id="inputDataContainer" class="row-input">
+                <input type="text" id="userId" class="input-box" placeholder="Masukkan ID Player">
+                <input type="text" id="zoneId" class="input-box" placeholder="Server ID" style="display:none;">
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-label"><span class="step-num">2</span> Pilih Nominal Top Up</div>
+            <div class="nominal-grid" id="nominalList"></div>
+
+            <!-- STEP 3 -->
+            <div class="step-label"><span class="step-num">3</span> Pilih Pembayaran</div>
+            <div class="payment-grid">
+                <div class="pay-item" onclick="selectPay(this)">QRIS / All Pay</div>
+                <div class="pay-item" onclick="selectPay(this)">DANA</div>
+                <div class="pay-item" onclick="selectPay(this)">OVO</div>
+                <div class="pay-item" onclick="selectPay(this)">GOPAY</div>
+                <div class="pay-item" onclick="selectPay(this)">BRImo</div>
+                <div class="pay-item" onclick="selectPay(this)">Alfa / Indomaret</div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step-label"><span class="step-num">4</span> Nomor WhatsApp Pembeli</div>
+            <input type="text" id="buyerPhone" class="input-box" placeholder="Nomor WhatsApp (Contoh: 08123456789)">
+
+            <!-- Tombol Beli -->
+            <button class="btn-checkout" onclick="sendToWhatsApp()">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> Beli Sekarang via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- NEWS AND UPDATES SECTION (BISA DIKLIK) -->
+    <div class="news-section">
+        <div class="section-header">News and Updates</div>
+        <div class="news-grid">
+            <div class="news-card" onclick="openModal('Cek Info Promo', 'Dapatkan info promo menarik, diskon diamond harian, dan bonus saldo setiap melakukan top up di Xeroz Top Up[span_2](start_span)[span_2](end_span).')">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="Promo">
+                <div class="news-content">
+                    <h4>Cek Info Promo</h4>
+                    <p>Promo dan Berita update lainnya seputar game kesayanganmu[span_3](start_span)[span_3](end_span).</p>
+                </div>
+            </div>
+            <div class="news-card" onclick="openModal('Waspada Penipuan APK!', 'Pastikan top-up hanya di situs resmi Xeroz Top Up[span_4](start_span)[span_4](end_span). Kami tidak pernah meminta password atau data login akun game Anda.')">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80" alt="Waspada">
+                <div class="news-content">
+                    <h4>Waspada Penipuan APK!</h4>
+                    <p>Pastikan top-up hanya di situs resmi Xeroz Top Up[span_5](start_span)[span_5](end_span).</p>
+                </div>
+            </div>
+            <div class="news-card" onclick="openModal('Kenali Modus Penipuan Gim', 'Unduh buku saku anti penipuan dan jaga keamanan akunmu dari link phising atau oknum yang mengatasnamakan admin Xeroz Top Up[span_6](start_span)[span_6](end_span).')">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Modus">
+                <div class="news-content">
+                    <h4>Kenali Modus Penipuan Gim</h4>
+                    <p>Unduh buku saku anti penipuan dan jaga keamanan akunmu[span_7](start_span)[span_7](end_span).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP KETERANGAN BERITA -->
+    <div id="newsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="color: #ffcc00; margin-bottom: 10px;"></h3>
+            <p id="modalDesc" style="font-size: 0.95rem; line-height: 1.6;"></p>
+        </div>
+    </div>
+
+    <!-- FOOTER HIJAU NEON -->
+    <div class="footer-neon-section">
+        <div class="footer-neon-container">
+            <div class="footer-block">
+                <h3>Untuk Penerbit</h3>
+                <p>Xeroz Top Up</p>
+            </div>
+
+            <div class="footer-block">
+                <h3>Butuh Bantuan?</h3>
+                <a href="https://wa.me/628132254940" target="_blank" class="help-btn"><i class="fa-regular fa-comment-dots"></i> Hubungi Kami <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i></a>
+            </div>
+
+            <div class="footer-block">
+                <h3>Area</h3>
+                <div class="area-box">
+                    <span>🇮🇩</span> Indonesia
+                </div>
+            </div>
+
+            <div class="footer-block">
+                <h3>Dapatkan berita Xeroz Top Up di WhatsApp saja</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/628132254940" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #120822;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER AKHIR -->
+    <div class="final-footer">
+        <div class="links">
+            <span>Pemasaran dan Kemitraan</span> . 
+            <span>Untuk Penerbit Game</span> . 
+            <span>Syarat & Ketentuan</span> . 
+            <span>Kebijakan Privasi</span> . 
+            <span>Bounty bug</span> . 
+            <span>Menjadi distributor</span>[span_8](start_span)[span_8](end_span)
+        </div>
+        <div>&copy; Hak Cipta Xeroz Top Up</div>
+        <div class="brand-logo">
+            <i class="fa-solid fa-gem"></i> XEROZ TOP UP
+        </div>
+    </div>
+
+    <!-- Script Logika, Animasi & Modal -->
+    <script>
+        let currentGame = 'ff';
+        let selectedItemName = '';
+        let selectedItemPrice = '';
+        let selectedPaymentMethod = '';
+
+        const gameData = {
+            ff: [
+                { name: '70 Diamonds', price: 'Rp 10.000' },
+                { name: '140 Diamonds', price: 'Rp 20.000' },
+                { name: '355 Diamonds', price: 'Rp 50.000' },
+                { name: '720 Diamonds', price: 'Rp 100.000' }
+            ],
+            ml: [
+                { name: '85 Diamonds', price: 'Rp 20.000' },
+                { name: '170 Diamonds', price: 'Rp 40.000' },
+                { name: '284 Diamonds', price: 'Rp 65.000' },
+                { name: '568 Diamonds', price: 'Rp 130.000' }
+            ],
+            roblox: [
+                { name: '100 Robux', price: 'Rp 20.000' },
+                { name: '400 Robux', price: 'Rp 75.000' },
+                { name: '800 Robux', price: 'Rp 145.000' },
+                { name: '1700 Robux', price: 'Rp 290.000' }
+            ]
+        };
+
+        function triggerDiamondAnimation() {
+            for (let i = 0; i < 12; i++) {
+                let d = document.createElement('div');
+                d.className = 'diamond-particle';
+                d.innerHTML = '<i class="fa-solid fa-gem"></i>';
+                d.style.left = Math.random() * window.innerWidth + 'px';
+                d.style.top = '-30px';
+                d.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
+                document.body.appendChild(d);
+                setTimeout(() => d.remove(), 2500);
+            }
+        }
+
+        window.onload = () => {
+            triggerDiamondAnimation();
+            renderNominalList();
+        };
+
+        function renderNominalList() {
+            const container = document.getElementById('nominalList');
+            container.innerHTML = '';
+            gameData[currentGame].forEach(item => {
+                let div = document.createElement('div');
+                div.className = 'nominal-item';
+                div.innerHTML = `<div class="item-title">${item.name}</div><div class="item-price">${item.price}</div>`;
+                div.onclick = () => {
+                    document.querySelectorAll('.nominal-item').forEach(el => el.classList.remove('selected'));
+                    div.classList.add('selected');
+                    selectedItemName = item.name;
+                    selectedItemPrice = item.price;
+                };
+                container.appendChild(div);
+            });
+        }
+
+        function switchGame(key, element) {
+            currentGame = key;
+            document.querySelectorAll('.game-card').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            triggerDiamondAnimation();
+
+            const zoneInput = document.getElementById('zoneId');
+            const userIdInput = document.getElementById('userId');
+            
+            if (key === 'ml') {
+                zoneInput.style.display = 'block';
+                zoneInput.placeholder = "Server ID";
+                userIdInput.placeholder = "ID Player";
+            } else if (key === 'roblox') {
+                zoneInput.style.display = 'none';
+                zoneInput.value = '';
+                userIdInput.placeholder = "Username Roblox";
+            } else {
+                zoneInput.style.display = 'none';
+                zoneInput.value = '';
+                userIdInput.placeholder = "ID Player";
+            }
+
+            selectedItemName = '';
+            selectedItemPrice = '';
+            renderNominalList();
+        }
+
+        function selectPay(element) {
+            document.querySelectorAll('.pay-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedPaymentMethod = element.innerText;
+        }
+
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('newsModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('newsModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function sendToWhatsApp() {
+            let gameCardTitle = document.querySelector('.game-card.active .title').innerText;
+            let userId = document.getElementById('userId').value;
+            let zoneId = document.getElementById('zoneId').value;
+            let buyerPhone = document.getElementById('buyerPhone').value;
+
+            if (!userId) {
+                alert('Mohon masukkan ID/Data Player terlebih dahulu!');
+                return;
+            }
+            if (!selectedItemName) {
+                alert('Mohon pilih nominal item top up!');
+                return;
+            }
+            if (!selectedPaymentMethod) {
+                alert('Mohon pilih metode pembayaran!');
+                return;
+            }
+            if (!buyerPhone) {
+                alert('Mohon masukkan nomor WhatsApp kamu!');
+                return;
+            }
+
+            let formatPesan = `Halo Admin Xeroz Top Up, saya ingin melakukan pemesanan:\n\n` +
+                             `🎮 Game: ${gameCardTitle}\n` +
+                             `🆔 ID / Akun: ${userId} ${zoneId ? '('+zoneId+')' : ''}\n` +
+                             `📦 Item: ${selectedItemName}\n` +
+                             `💰 Harga: ${selectedItemPrice}\n` +
+                             `💳 Pembayaran: ${selectedPaymentMethod}\n` +
+                             `📱 No WhatsApp: ${buyerPhone}\n\n` +
+                             `Mohon segera diproses ya kak, terima kasih!`;
+
+            let urlWa = `https://wa.me/628132254940?text=` + encodeURIComponent(formatPesan);
+            window.open(urlWa, '_blank');
+        }
+    </script>
+</body>
+</html>
